@@ -37,13 +37,16 @@ Default setup is as follows:
 Testing results:
 
 So running the qurries on the full set i got this data:
-test results in milisec
-                MySQL              Neo4j       
-          average   median    average   median
-Depth 1:  477        471        61        97
-Depth 2:  17956      5584       48        55
-Depth 3:  311309    103596      79        69
 
+test results in milisec
+
+|  test         |     MySQL     |              |    Neo4j      |              |
+| ------------- |:-------------:|:------------:|:-------------:| ------------:|                             
+| Depth         |    median     |   average    |    median     |   average    | 
+| ------------- |:-------------:|:------------:|:-------------:| ------------:|
+| Depth 1       | 477           |      471     |      61       |       97     | 
+| Depth 2       | 17956         |     5584     |      48       |       55     |
+| Depth 3       | 311309        |   103596     |      79       |       69     |
 
 So from my results you can clearly see that Neo4J is alot faster for this kind of data. The reason for this is that for the mySQL database each time you do a join it will have to make the cartesian product and then filter out the that that is not needed using the where clause.
 For Neo4J the data can be found at a pretty predictial speed since it will only look at the data connected directly with our node and thereforere elimenate alot of lookup that is done in the mySQL database.
